@@ -1,0 +1,72 @@
+<div class="container-fluid">
+  <div *ngIf="message" class="alert alert-warning alert-dismissible show" role="alert">
+      
+      <button type="button" class="btn-close" (click)="dismissAlert()" aria-label="Close"></button>
+    </div>
+  
+  <h2 *ngIf="message">{{message}}</h2>
+  
+  <app-cocktail-form *ngIf="showCocktailForm" (cocktailFormClose)="cocktailFormClose($event)" [cocktail]="currentCocktail"
+  ></app-cocktail-form>
+  <div class="search-container">
+  <form class="form-inline" (submit)="$event.preventDefault()">
+    <div class="form-group mb-4">   
+      <input type="text" name="cocktail-name" placeholder="Search for Cocktail" #searchterm class="search-bar">
+      <button (click)="getDrinkDetails(searchterm.value)" class="btn btn-success">Get Drink</button>
+      <button (click)="getrandomDetails()" class="btn btn-secondary">Random Drink</button>
+    </div>
+  </form>
+</div>
+  
+  
+  <div *ngIf="cocktaildata && cocktaildata.drinks" class="row drink-list">
+    <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 drink-item " *ngFor="let drink of cocktaildata.drinks">
+      <h1>{{drink.strDrink}}</h1>
+      <img class="img-thumbnail rounded float-left w-50" src="{{drink.strDrinkThumb}}">
+      <div class="text-info">
+        <p>Ingredients</p>
+        <div>
+          <h4>{{drink.strIngredient1}} - {{drink.strMeasure1}}</h4>
+          <h4 *ngIf="drink.strIngredient2 != null">{{drink.strIngredient2}} - {{drink.strMeasure2}}</h4>
+          <h4 *ngIf="drink.strIngredient3 != null">{{drink.strIngredient3}} - {{drink.strMeasure3}}</h4>
+          <h4 *ngIf="drink.strIngredient4 != null">{{drink.strIngredient4}} - {{drink.strMeasure4}}</h4>
+          <h4 *ngIf="drink.strIngredient5 != null">{{drink.strIngredient5}} - {{drink.strMeasure5}}</h4>
+          <h4 *ngIf="drink.strIngredient6 != null">{{drink.strIngredient6}} - {{drink.strMeasure6}}</h4>
+          <h4 *ngIf="drink.strIngredient7 != null">{{drink.strIngredient7}} - {{drink.strMeasure7}}</h4>
+        </div>
+        <p>Instructions</p>
+        <h4>{{drink.strInstructions}}</h4>
+        <!--<button (click)="addToFavorites(drink.idDrink)">Add to Favorites</button> -->
+        <button class="button-favorite" *ngIf="drink.idDrink" (click)="addToFavorites(drink)">Add to Favorites</button>
+  
+      </div>
+    </div>
+  </div>
+  
+  <div  *ngIf="cocktailrandom" class="row drink-list">
+    <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 border drink-item" *ngFor="let drink of cocktailrandom">
+      <h1>{{drink.strDrink}}</h1>
+      <img class="img-thumbnail rounded float-left w-50" src="{{drink.strDrinkThumb}}">
+      <div class="text-info">
+          <p>Ingredients</p>
+          <div>
+              <h4>{{drink.strIngredient1}} - {{drink.strMeasure1}}</h4>
+              <h4 *ngIf="drink.strIngredient2 != null">{{drink.strIngredient2}} - {{drink.strMeasure2}}</h4>
+              <h4 *ngIf="drink.strIngredient3 != null">{{drink.strIngredient3}} - {{drink.strMeasure3}}</h4>
+              <h4 *ngIf="drink.strIngredient4 != null">{{drink.strIngredient4}} - {{drink.strMeasure4}}</h4>
+              <h4 *ngIf="drink.strIngredient5 != null">{{drink.strIngredient5}} - {{drink.strMeasure5}}</h4>
+              <h4 *ngIf="drink.strIngredient6 != null">{{drink.strIngredient6}} - {{drink.strMeasure6}}</h4>
+              <h4 *ngIf="drink.strIngredient7 != null">{{drink.strIngredient7}} - {{drink.strMeasure7}}</h4>
+          </div>
+          <p>Instructions</p>
+          <h4>{{drink.strInstructions}}</h4>
+          <button class="button-favorite" *ngIf="drink.idDrink" (click)="addToFavorites(drink)">Add to Favorites</button>
+      </div>      
+  </div>
+</div>
+  
+  
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  <app-cocktail-details *ngIf="currentCocktail" [cocktail]="currentCocktail"></app-cocktail-details>
+  
+  

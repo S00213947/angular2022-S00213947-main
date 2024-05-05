@@ -1,0 +1,152 @@
+div { background-color: #e5ffe5 !important; }
+
+
+button{ margin: 0 10px; }
+
+/* Typography */
+h1 {
+  font-family: 'Georgia', serif;
+  color: #333;
+}
+
+h4, p {
+  font-family: 'Arial', sans-serif;
+  color: #666;
+}
+
+.text-info {
+  color: #0056b3; /* Subtle blue for text info */
+}
+  
+.button-favorite {
+  background-color: #ff4500;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button-favorite:hover {
+  background-color: #e03e00;
+}
+  
+  /* Style for the search bar */
+  .search-bar {
+    width: 40%; /* Adjust the width as needed */
+    padding: 8px 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px; /* Add some margin between the search bar and buttons */
+  }
+
+  .search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px; /* Adjust the top margin as needed */
+  }
+
+
+/* Style for the buttons */
+.btn-success {
+  background-color: #28a745; /* Green color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: #218838; /* Darker green color on hover */
+}
+
+.btn-secondary {
+  background-color: #6c757d; /* Gray color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268; /* Darker gray color on hover */
+}
+
+/*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ drink card $$$$$$$$$$$$$$$$$$$$$$$ */
+.drink-card {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.drink-card img {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.drink-card h1 {
+  font-size: 24px;
+  color: #343a40;
+}
+
+.drink-card .text-info {
+  color: #6c757d;
+}
+
+.drink-list {
+  background-color: #f9f9f9;
+  margin: 20px;
+  padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.drink-item {
+  background: white;
+  padding: 15px;
+  margin: 10px; /* Adds margin around each item */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  flex-basis: calc(33% - 20px); /* Adjust this value based on the number of items per row */
+  text-align: center;
+}
+
+.drink-item:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Larger shadow for a lifted effect */
+  transition: box-shadow 0.3s ease; /* Smooth transition */
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .drink-item {
+      flex-direction: column;
+  }
+
+  .img-thumbnail {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+}

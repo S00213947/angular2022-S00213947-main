@@ -1,0 +1,28 @@
+<div *ngIf="favorites.length > 0; else noFavorites" class="favorites-list drink-card">
+    <ul class="cocktail-list">
+      <li *ngFor="let cocktail of favorites" class="cocktail-item">
+        <h1>{{ cocktail.strDrink }}</h1>
+        <img class="img-thumbnail rounded float-left w-50" src="{{cocktail.strDrinkThumb}}">
+       
+        <p>Ingredients:</p>
+        <ul>
+            <h4>
+          <li>{{ cocktail.strIngredient1 }} - {{ cocktail.strMeasure1 }}</li>
+          <li *ngIf="cocktail.strIngredient2">{{ cocktail.strIngredient2 }} - {{ cocktail.strMeasure2 }}</li>
+          <li *ngIf="cocktail.strIngredient3">{{ cocktail.strIngredient3 }} - {{ cocktail.strMeasure3 }}</li>
+          <li *ngIf="cocktail.strIngredient4">{{ cocktail.strIngredient4 }} - {{ cocktail.strMeasure4 }}</li>
+          <li *ngIf="cocktail.strIngredient5">{{ cocktail.strIngredient5 }} - {{ cocktail.strMeasure5 }}</li>
+          <li *ngIf="cocktail.strIngredient6">{{ cocktail.strIngredient6 }} - {{ cocktail.strMeasure6 }}</li>
+        </h4>
+        </ul>
+        <p>Instructions: </p>
+        <h4>{{ cocktail.strInstructions }}</h4>
+        <button class="button-remove" (click)="removeFavorite(cocktail.idDrink)">Remove from Favorites</button>
+      </li>
+    </ul>
+  </div>
+  
+  <ng-template #noFavorites>
+    <p class="center-text">No favorite cocktails yet.</p>
+    <p class="center-text">Search for cocktails and add them to your favorites to see them here!</p>
+  </ng-template>

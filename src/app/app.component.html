@@ -1,0 +1,54 @@
+
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <h1 class="navbar-brand" href="#">Cocktail List</h1>
+        </div>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/cocktails" routerLinkActive="active">cocktails</a>
+                </li>
+            </ul>
+            
+
+            <!-- This ul will be aligned to the right -->
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" *ngIf="isAuthenticated$ | async" routerLink="/profile"
+                        routerLinkActive="active">Favourites</a>
+                </li>
+            </ul>
+        </div>
+    
+
+
+
+        <a class="nav-link" *ngIf="isAuthenticated$ | async" routerLink="/profile"
+            routerLinkActive="active">Profile</a>
+
+        <div class="d-flex">
+            <button type="button" *ngIf="!(isAuthenticated$ | async)" class="btn btn-primary col-6 px-3 me-2"
+                (click)=handleLogin()>
+                Login
+            </button>
+            <button type="button" *ngIf="!(isAuthenticated$ | async)" class="btn btn-secondary col-6 px-3 me-2"
+                (click)=handleSignUp()>
+                SignUp
+            </button>
+            <button *ngIf="isAuthenticated$ | async" class="btn btn-primary me-3" (click)=handleLogout()>
+                Log Out
+            </button>
+        </div>
+    </div>
+
+</nav>
+
+
+<router-outlet></router-outlet>

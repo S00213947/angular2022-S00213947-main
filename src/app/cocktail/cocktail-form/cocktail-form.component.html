@@ -1,0 +1,50 @@
+<h2>Please Enter cocktail Data</h2>
+
+<button type="button" class="btn-close" aria-label="Close" (click)="closeForm()"></button>
+
+
+ <form [formGroup]="cocktailForm" (ngSubmit) = "onSubmit()" class="form-group" class="container-md">
+
+    <div class="mb-3">
+        <label for="drinkName">Drink Name</label>
+        <input id="drinkName" type="text" formControlName="drinkName" class="form-control">
+    </div>
+    <legend>Ingredients</legend>
+    <div class="mb-3">
+        <label for="ing1"> Ingredient 1:</label>
+        <input id="ing1" type="text" formControlName="ing1" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="ing2"> Ingredient 2:</label>
+        <input id="ing2" type="text" formControlName="ing2" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="ing3"> Ingredient 3:</label>
+        <input id="ing3" type="text" formControlName="ing3" class="form-control">
+    </div>
+    <legend>Measures</legend>
+    <div class="mb-3">
+        <label for="measure1">Measure1</label>
+        <input id="measure1" type="text" formControlName="measure1" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="measure2">Measure2</label>
+        <input id="measure2" type="text" formControlName="measure2" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="measure3">Measure3</label>
+        <input id="measure3" type="text" formControlName="measure3" class="form-control">
+    </div>
+
+    <legend>Instructions</legend>
+    <div class="mb-3">
+        <label for="instructions"> Instructions:</label>
+        <input id="instructions" type="text" formControlName="instructions" class="form-control">
+    </div>
+    
+ 
+    <button type="submit" [disabled] = "!cocktailForm.valid" >Submit</button>
+
+   
+
+    </form>

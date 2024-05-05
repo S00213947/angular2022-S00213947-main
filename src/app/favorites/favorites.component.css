@@ -1,0 +1,83 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 33;
+  }
+
+  .center-text {
+    text-align: center;
+    margin: auto;
+    width: 50%; /* Adjust the width as needed */
+  }
+
+  .center-heading {
+    text-align: center;
+    margin: auto;
+    width: 50%; /* Adjust the width as needed */
+  }
+  /* Typography */
+h1 {
+    font-family: 'Georgia', serif;
+    color: #333;
+  }
+  
+  h4, p {
+    font-family: 'Arial', sans-serif;
+    color: #666;
+  }
+
+  .favorites-list {
+    text-align: center;
+  }
+  
+  .cocktail-list {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Adjust as needed */
+  }
+  
+  .cocktail-item {
+    padding: 15px;
+  margin: 10px; /* Adds margin around each item */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  flex-basis: calc(33% - 20px); /* Adjust this value based on the number of items per row */
+    text-align: center;
+  }
+  
+  .cocktail-item:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Larger shadow for a lifted effect */
+    transition: box-shadow 0.3s ease; /* Smooth transition */
+  }
+
+  .button-remove {
+    background-color: #dc3545; /* Red color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-remove:hover {
+    background-color: #c82333; /* Darker red color on hover */
+  }
+
+
+  /* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .list-item {
+      flex-direction: row;
+    }
+  
+    .img-thumbnail {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
