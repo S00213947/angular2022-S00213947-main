@@ -9,6 +9,9 @@
     audience: 'cocktails'
   }
 };
+
+old callback    http://localhost:3000/callback
+old logout      http://localhost:3000
 */
 
 //updated after no account
