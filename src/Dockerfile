@@ -1,25 +1,22 @@
 # Use a compatible Node.js base image
-FROM node:16-alpine as build
-
-# Set working directory in the container
+FROM node:14-alpine as build
 WORKDIR /app
 
 # Install Angular CLI globally
 RUN npm install -g @angular/cli
 
-# Copy package.json and package-lock.json (if available)
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install project dependencies
-RUN npm install
+# Clean npm cache and install dependencies
+RUN npm cache clean --force && npm install
 
-# Copy project files into the Docker image
+# Copy project files
 COPY . .
 
-# Build the Angular application
-RUN npm run build
+# Build the Angular application and log errors
+RUN npm run build --prod || (ls /tmp/ng-* && cat /tmp/ng-*/angular-errors.log && false)
 
-# Stage 2: Serve the app using nginx
 FROM nginx:alpine
 COPY --from=build /app/dist/* /usr/share/nginx/html/
 EXPOSE 80

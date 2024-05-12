@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
   <div *ngIf="message" class="alert alert-warning alert-dismissible show" role="alert">
       
@@ -64,9 +65,68 @@
       </div>      
   </div>
 </div>
-  
-  
+
+<app-cocktail-details *ngIf="currentCocktail" [cocktail]="currentCocktail"></app-cocktail-details>
+<div *ngIf="!searchPerformed" class="row">
+  <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 border">
+    <a href="/drink/11000-Mojito-Cocktail" >
+      <div>
+        <img class="img-thumbnail rounded float-left w-50" src="https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg" width="95%">
+        Mojito
+      </div>
+    </a>
+    <br>
+    <br>
+  </div>
+
+  <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 border">
+    <a href="drink/11001-Old-Fashioned-Cocktail" >
+      <div>
+        <img class="img-thumbnail rounded float-left w-50" src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg" width="95%">
+        Tony
+      </div>
+    </a>
+    <br>
+    <br>
+  </div>
+
+
+<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 border">
+  <a href="/drink/11000-Mojito-Cocktail" >
+    <div>
+      <img class="img-thumbnail rounded float-left w-50" src="https://www.thecocktaildb.com/images/media/drink/nkwr4c1606770558.jpg" width="95%">
+      Long Island Tea
+    </div>
+  </a>
+  <br>
+  <br>
+</div>
+
+<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 border">
+  <a href="/drink/11000-Mojito-Cocktail" >
+    <div>
+      <img class="img-thumbnail rounded float-left w-50" src="https://www.thecocktaildb.com/images/media/drink/nkwr4c1606770558.jpg" width="95%">
+      Long Island Tea
+    </div>
+  </a>
+  <br>
+  <br>
+</div>
+
+<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 border">
+  <a href="/drink/11000-Mojito-Cocktail" >
+    <div>
+      <img class="img-thumbnail rounded float-left w-50" src="https://www.thecocktaildb.com/images/media/drink/nkwr4c1606770558.jpg" width="95%">
+      Long Island Tea
+    </div>
+  </a>
+  <br>
+  <br>
+</div>
+</div>
+
+
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
   <app-cocktail-details *ngIf="currentCocktail" [cocktail]="currentCocktail"></app-cocktail-details>
-  
-  
+ 

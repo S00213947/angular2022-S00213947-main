@@ -10,8 +10,15 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { AuthService } from '@auth0/auth0-angular';
 import { FavoritesService } from 'src/app/favorites.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 library.add(faHeart);
+
+interface Drink {
+  name: string;
+  image: string;
+  link: string;
+}
 
 @Component({
   selector: 'app-cocktail-list',
@@ -22,6 +29,15 @@ library.add(faHeart);
 })
 export class CocktailListComponent implements OnInit {
 
+  drinks = [
+    { name: 'Mojito', image: 'https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg', link: '/drink/11000-Mojito-Cocktail' },
+    { name: 'Old Fashioned', image: 'https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg', link: 'drink/11001-Old-Fashioned-Cocktail' },
+    { name: 'Long Island Tea', image: 'https://www.thecocktaildb.com/images/media/drink/nkwr4c1606770558.jpg', link: '/drink/11002-Long-Island-Tea-Cocktail' },
+    { name: 'Whisky Sour', image: 'https://www.thecocktaildb.com/images/media/drink/hbkfsh1589574990.jpg', link: '/drink/11004-Whiskey-Sour-Cocktail' },
+    { name: 'Daquiri', image: 'https://www.thecocktaildb.com/images/media/drink/mrz9091589574515.jpg', link: '/drink/11006-Daiquiri-Cocktail' },
+  ];
+  displayedDrinks: Drink[] = [];
+
   cocktailList: Cocktail[] = [];
   message: string = "";
   cocktaildata: DrinkReponse | any;
@@ -29,25 +45,34 @@ cocktailrandom: DrinkReponse | any;
 errorMessage:any;
 icon=faHeart;
 isFavorited: boolean = false;
-
+searchPerformed: boolean = false; 
 
 
   currentCocktail : Cocktail | undefined;
   showCocktailForm: boolean = false;
  
 
-  constructor(private _cocktailservice:CocktailApiService,public auth: AuthService, private cocktailservice: CocktailService,private favoritesService: FavoritesService) { }
+  constructor(private _cocktailservice:CocktailApiService,public auth: AuthService, private cocktailservice: CocktailService,private favoritesService: FavoritesService, private cdr: ChangeDetectorRef) { }
  // constructor(private cocktailservice: FakecocktailService) { }
-  ngOnInit(): void {
-    this.cocktailservice.getCocktails().subscribe({
-      next: (value: Cocktail[] )=> this.cocktailList = value,
-      complete: () => console.log("cocktail service finished"),
-      error: (err) => {
-        console.error('Failed to load cocktails:', err);
-        this.message = 'Failed to load cocktails';
-      }
-    });
-  }
+ ngOnInit(): void {
+  this.cocktailservice.getCocktails().subscribe({
+    next: (value: Cocktail[]) => {
+      this.cocktailList = value;
+      this.displayedDrinks = [
+        { name: 'Mojito', image: 'https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg', link: '/drink/11000-Mojito-Cocktail' },
+        { name: 'Old Fashioned', image: 'https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg', link: '/drink/11001-Old-Fashioned-Cocktail' },
+        { name: 'Long Island Tea', image: 'https://www.thecocktaildb.com/images/media/drink/nkwr4c1606770558.jpg', link: '/drink/11002-Long-Island-Tea-Cocktail' }
+      ];
+    },
+    complete: () => console.log("cocktail service finished"),
+    error: (err) => {
+      console.error('Failed to load cocktails:', err);
+      this.message = 'Failed to load cocktails';
+    }
+  });
+}
+
+
 
   clicked (cocktail: Cocktail): void {
     this.currentCocktail = cocktail;
@@ -71,30 +96,36 @@ isFavorited: boolean = false;
     this.isFavorited = !this.isFavorited;
   }
 
-  getDrinkDetails(searchTerm:string) : boolean {
+  getDrinkDetails(searchTerm: string) : boolean {
     this._cocktailservice.getSearchData(searchTerm).subscribe(
       cocktaildata => {
-        this.cocktaildata=cocktaildata;
-        console.log('   this.cocktaildata: ',    this.cocktaildata);
+        this.cocktaildata = cocktaildata;
+        console.log('this.cocktaildata: ', this.cocktaildata);
         console.log('drink name' + this.cocktaildata.name);
+        this.searchPerformed = true; // Consider setting it here if it depends on successful data fetch
       },
-      error => this.errorMessage = <any>error
+      error => {
+        this.errorMessage = <any>error;
+        this.searchPerformed = false; // Reset or handle error as needed
+      }
     );
-    return false;
-    }
+    return false; // Consider what this return value is used for
+  }
 
-    getrandomDetails(): void {
-      this._cocktailservice.getrandomData().subscribe(
-        cocktailrandom => {
-          this.cocktailrandom = cocktailrandom;
-          console.log('Cocktail Random Data:', this.cocktailrandom);
-        },
-        error => {
-          this.errorMessage = <any>error;
-          console.error('Error fetching random cocktail:', error);
-        }
-      );
-    }
+  getrandomDetails(): void {
+    this._cocktailservice.getrandomData().subscribe(
+      cocktailrandom => {
+        this.cocktailrandom = cocktailrandom;
+        console.log('Cocktail Random Data:', this.cocktailrandom);
+        this.searchPerformed = true; // Set this if using the same flag for any search
+        // or this.randomSearchPerformed = true; if using a separate flag
+      },
+      error => {
+        this.errorMessage = <any>error;
+        console.error('Error fetching random cocktail:', error);
+      }
+    );
+  }
 
     addToFavorites(cocktail: Cocktail): void {
       console.log('cocktail: ', cocktail);
@@ -133,6 +164,13 @@ isFavorited: boolean = false;
         });
       }
       
+      handleSearch(searchTerm: string) {
+        if (searchTerm) {
+          this.getDrinkDetails(searchTerm);
+          this.searchPerformed = true;
+        }
+      }
+     
      
 
       getsandomDetails(): Observable<any> {
@@ -222,4 +260,4 @@ addNewCocktail(newCocktail: Cocktail): void {
   }
   
   
-  }
+}

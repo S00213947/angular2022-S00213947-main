@@ -150,3 +150,10 @@ h4, p {
       margin-bottom: 10px;
   }
 }
+
+.carousel-item img {
+  height: auto; /* Maintain aspect ratio */
+  max-height: 400px; /* Adjust based on your requirement */
+  width: auto;
+  max-width: 100%; /* Ensure it doesn't grow beyond the container width */
+}
