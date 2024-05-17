@@ -3,8 +3,7 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import { Observable, observable, of, pipe, Subject, throwError } from 'rxjs';
 import {catchError,tap, map} from 'rxjs/operators';
 import { DrinkReponse } from '../cocktail/cocktailresponse';
-import { environment } from 'src/enviroments/enviroment';
-
+import { environment } from 'src/environments/environment';
 
 
 

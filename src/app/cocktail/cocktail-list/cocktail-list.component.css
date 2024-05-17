@@ -1,4 +1,4 @@
-div { background-color: #e5ffe5 !important; }
+/*div { background-color: #e5ffe5 !important; }*/
 
 
 button{ margin: 0 10px; }
@@ -18,8 +18,9 @@ h4, p {
   color: #0056b3; /* Subtle blue for text info */
 }
   
-.button-favorite {
-  background-color: #ff4500;
+/* Button Styles */
+.button-favorite, .btn-success, .btn-secondary {
+  background-color: #ff4500; /* Default red */
   color: white;
   border: none;
   padding: 10px 20px;
@@ -29,13 +30,32 @@ h4, p {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  border-radius: 12px;
+  border-radius: 12px; /* Uniform border radius */
+  transition: background-color 0.3s ease;
 }
 
 .button-favorite:hover {
-  background-color: #e03e00;
+  background-color: #e03e00; /* Darker red on hover */
 }
-  
+
+.btn-success {
+  background-color: #28a745; /* Green */
+}
+
+.btn-success:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+.btn-secondary {
+  background-color: #6c757d; /* Gray */
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268; /* Darker gray on hover */
+}
+
+
+
   /* Style for the search bar */
   .search-bar {
     width: 40%; /* Adjust the width as needed */
@@ -53,42 +73,7 @@ h4, p {
   }
 
 
-/* Style for the buttons */
-.btn-success {
-  background-color: #28a745; /* Green color */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
 
-.btn-success:hover {
-  background-color: #218838; /* Darker green color on hover */
-}
-
-.btn-secondary {
-  background-color: #6c757d; /* Gray color */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.btn-secondary:hover {
-  background-color: #5a6268; /* Darker gray color on hover */
-}
 
 /*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ drink card $$$$$$$$$$$$$$$$$$$$$$$ */
 .drink-card {
@@ -115,7 +100,7 @@ h4, p {
 }
 
 .drink-list {
-  background-color: #f9f9f9;
+  background-color: #e5ffe5;
   margin: 20px;
   padding: 10px;
     display: flex;
@@ -124,13 +109,14 @@ h4, p {
 }
 
 .drink-item {
-  background: white;
+  background: #dcf8dc;
   padding: 15px;
-  margin: 10px; /* Adds margin around each item */
+  margin: 15px 15px 15px 55px; /* Increases left margin */
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  flex-basis: calc(33% - 20px); /* Adjust this value based on the number of items per row */
+  flex-basis: calc(25% - 30px); /* Adjust this based on the increased margin */
   text-align: center;
+  
 }
 
 .drink-item:hover {
@@ -151,9 +137,139 @@ h4, p {
   }
 }
 
-.carousel-item img {
+.carousel-item .img-thumbnail {
+  max-width: 100%; /* Adjust the max width as needed */
   height: auto; /* Maintain aspect ratio */
-  max-height: 400px; /* Adjust based on your requirement */
-  width: auto;
-  max-width: 100%; /* Ensure it doesn't grow beyond the container width */
+  display: block; /* Ensures it's a block to take width properly */
+  margin: 0 auto; /* Center the image */
 }
+
+.carousel-item {
+  background: #e5ffe5;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+ 
+}
+
+.carousel-item:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.carousel-item .img-thumbnail {
+  max-width: 20%;
+  margin: auto;
+}
+
+.carousel-item {
+background: #dcf8dc;
+padding: 55px;
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+text-align: center;
+background-image: linear-gradient(to right, #dcf8dc, #d9fad9); /* Gradient from left to right */
+}
+
+.carousel-item:hover {
+box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+transition: box-shadow 0.3s ease;
+}
+.carousel-item .img-thumbnail {
+  max-width: 100%; /* Adjust this if images look too large or small */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 10px;
+}
+
+.drink-item h5 {
+  margin-top: 5px;
+}
+
+.drink-item {
+  flex: 0 0 auto; /* Make sure items do not grow or shrink */
+  width: 20%; /* Adjust width based on how many items per slide */
+  padding: 15px;
+  text-align: center;
+}
+
+.carousel-hover-message {
+  display: none;
+  position: absolute;
+  top: 90%;  
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  width: 30%; 
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 0.9em;
+  z-index: 100;
+}
+
+.drink-item:hover .carousel-hover-message {
+  display: block;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .drink-item, .carousel-item, .search-bar {
+    width: 100%; /* Full width on smaller screens */
+    flex-direction: column; /* Stack elements vertically */
+  }
+
+  .search-bar {
+    margin-bottom: 10px; /* Space below search bar when stacked */
+  }
+
+  .btn-success, .btn-secondary, .button-favorite {
+    width: 100%; /* Full width buttons for easier mobile access */
+    margin: 10px 0; /* Space around buttons */
+  }
+}
+
+.center-heading {
+  text-align: center;
+  margin: auto;
+  width: 100%;  /* Adjust the width as needed to fit your design */
+  font-family: 'Georgia', serif;
+  color: #333;
+  padding-top: 20px;  /* Space above the heading */
+  padding-bottom: 10px;  /* Space below the heading */
+}
+
+/* Custom styling for carousel control buttons */
+.carousel-control-prev, .carousel-control-next {
+  background-color: black; /* Solid black background */
+  border-radius: 50%; /* Circular shape */
+  width: 45px; /* Adequate width for touch targets */
+  height: 45px; /* Matching height for a perfect circle */
+  display: flex; /* Utilize flexbox for centering the icon */
+  align-items: center; /* Center the icon vertically */
+  justify-content: center; /* Center the icon horizontally */
+  opacity: 0.7; /* Semi-transparency for aesthetics */
+  outline: none; /* Remove default focus outline */
+  border: none; /* Remove any default borders */
+  position: absolute;
+  top: 50%; /* Align vertically in the middle of the carousel */
+    transform: translateY(-50%); /* Offset to center vertically */
+    z-index: 2; /* Ensure they appear above carousel images */
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  background-size: 50%; /* Properly size the contained SVG icon */
+  background-repeat: no-repeat; /* Ensure the icon doesn't repeat */
+}
+
+.carousel-control-prev {
+  left: 10px; /* Adequate spacing from the left edge */
+}
+
+.carousel-control-next {
+  right: 10px; /* Adequate spacing from the right edge */
+}
+

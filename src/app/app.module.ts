@@ -12,7 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CocktailFormComponent } from './cocktail/cocktail-form/cocktail-form.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { AuthHttpInterceptor } from '@auth0/auth0-angular';
-import { environment } from 'src/enviroments/enviroment';
+import { environment } from 'src/environments/environment';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -37,7 +37,12 @@ import { FavoritesComponent } from './favorites/favorites.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AuthModule.forRoot({...environment.auth0,
+    AuthModule.forRoot({
+      domain: environment.auth0.domain,
+      clientId: environment.auth0.clientId,
+      redirectUri: environment.auth0.callback_URL,
+      audience: environment.auth0.audience,
+      scope: 'openid porfile email',
       httpInterceptor: {
         allowedList: [`${environment.apiUri}/cocktails`],
       },})
@@ -50,3 +55,8 @@ import { FavoritesComponent } from './favorites/favorites.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+//domain: environment.auth0.domain,
+//clientId: environment.auth0.clientId,
+//redirectUri: environment.auth0.callback_URL,
+//audience: environment.auth0.audience,
+//scope: 'openid porfile email',

@@ -7,7 +7,7 @@
         <p>Ingredients:</p>
         <ul>
             <h4>
-          <li>{{ cocktail.strIngredient1 }} - {{ cocktail.strMeasure1 }}</li>
+          <li>{{cocktail.strIngredient1 }} - {{ cocktail.strMeasure1 }}</li>
           <li *ngIf="cocktail.strIngredient2">{{ cocktail.strIngredient2 }} - {{ cocktail.strMeasure2 }}</li>
           <li *ngIf="cocktail.strIngredient3">{{ cocktail.strIngredient3 }} - {{ cocktail.strMeasure3 }}</li>
           <li *ngIf="cocktail.strIngredient4">{{ cocktail.strIngredient4 }} - {{ cocktail.strMeasure4 }}</li>
@@ -23,6 +23,6 @@
   </div>
   
   <ng-template #noFavorites>
-    <p class="center-text">No favorite cocktails yet.</p>
+    <p class="center-text">No favourite cocktails yet.</p>
     <p class="center-text">Search for cocktails and add them to your favorites to see them here!</p>
   </ng-template>

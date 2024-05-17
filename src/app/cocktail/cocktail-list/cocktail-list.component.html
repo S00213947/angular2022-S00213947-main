@@ -1,12 +1,4 @@
 
-<div class="container-fluid">
-  <div *ngIf="message" class="alert alert-warning alert-dismissible show" role="alert">
-      
-      <button type="button" class="btn-close" (click)="dismissAlert()" aria-label="Close"></button>
-    </div>
-  
-  <h2 *ngIf="message">{{message}}</h2>
-  
   <app-cocktail-form *ngIf="showCocktailForm" (cocktailFormClose)="cocktailFormClose($event)" [cocktail]="currentCocktail"
   ></app-cocktail-form>
   <div class="search-container">
@@ -67,6 +59,8 @@
 </div>
 
 <app-cocktail-details *ngIf="currentCocktail" [cocktail]="currentCocktail"></app-cocktail-details>
+
+ <!-- Indicators/dots 
 <div *ngIf="!searchPerformed" class="row">
   <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 border">
     <a href="/drink/11000-Mojito-Cocktail" >
@@ -123,6 +117,99 @@
   <br>
   <br>
 </div>
+</div>
+-->
+
+<div *ngIf="!searchPerformed" id="cocktailCarousel" class="carousel slide drink-list" data-bs-ride="carousel">
+  <h2 class="center-heading">Popular Drinks</h2>  <!-- You can style this heading as needed -->
+  <!-- Indicators/dots -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#cocktailCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#cocktailCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <!-- Add more buttons if you have more slides -->
+  </div>
+
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="d-flex justify-content-start">
+        <!-- Drink item with hover message -->
+        <div class="drink-item">
+            <img src="https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg" class="img-thumbnail" alt="Mojito">
+            <h5>Mojito</h5>
+          <div class="carousel-hover-message">
+            Search for Drinks to add them to your Favourites!
+          </div>
+        </div>
+        <!-- Drink item with hover message -->
+        <div class="drink-item">    
+            <img src="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg" class="img-thumbnail" alt="Old Fashioned">
+            <h5>Old Fashioned</h5> 
+          <div class="carousel-hover-message">
+            Search for Drinks to add them to your Favourites!
+          </div>
+        </div>
+        <div class="drink-item">    
+          <img src="https://www.thecocktaildb.com/images/media/drink/k0508k1668422436.jpg" class="img-thumbnail" alt="Gin And Tonic">
+          <h5>Gin And Tonic</h5> 
+        <div class="carousel-hover-message">
+          Search for Drinks to add them to your Favourites!
+        </div>
+      </div>
+      <div class="drink-item">    
+        <img src="https://www.thecocktaildb.com/images/media/drink/nkwr4c1606770558.jpg" class="img-thumbnail" alt="Long Island Tea">
+        <h5>Long Island Tea</h5> 
+      <div class="carousel-hover-message">
+        Search for Drinks to add them to your Favourites!
+      </div>
+    </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="d-flex justify-content-start">
+        <!-- Second slide drinks -->
+        <div class="drink-item">
+            <img src="https://www.thecocktaildb.com/images/media/drink/2bcase1504889637.jpg" class="img-thumbnail" alt="Screwdriver">
+            <h5>Screwdriver</h5>    
+          <div class="carousel-hover-message">
+            Search for Drinks to add them to your Favourites!
+          </div>
+        </div>
+        <div class="drink-item"> 
+            <img src="https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg" class="img-thumbnail" alt="Margarita">
+            <h5>Margarita</h5>
+          <div class="carousel-hover-message">
+            Search for Drinks to add them to your Favourites!
+          </div>   
+        </div>
+        <div class="drink-item"> 
+          <img src="https://www.thecocktaildb.com/images/media/drink/mrz9091589574515.jpg" class="img-thumbnail" alt="Daquiri">
+          <h5>Daquiri</h5>
+        <div class="carousel-hover-message">
+          Search for Drinks to add them to your Favourites!
+        </div>   
+      </div>
+      <div class="drink-item"> 
+        <img src="https://www.thecocktaildb.com/images/media/drink/hbkfsh1589574990.jpg" class="img-thumbnail" alt="Whisky Sour">
+        <h5>Whisky Sour</h5>
+      <div class="carousel-hover-message">
+        Search for Drinks to add them to your Favourites!
+      </div>   
+    </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#cocktailCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#cocktailCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
 
 

@@ -1,5 +1,5 @@
-# Use a compatible Node.js base image
-FROM node:14-alpine as build
+# Use a compatible Node.js base image with Node.js v18
+FROM node:18-alpine as build
 WORKDIR /app
 
 # Install Angular CLI globally
@@ -15,9 +15,11 @@ RUN npm cache clean --force && npm install
 COPY . .
 
 # Build the Angular application and log errors
-RUN npm run build --prod || (ls /tmp/ng-* && cat /tmp/ng-*/angular-errors.log && false)
+RUN ng build --configuration production || (ls /tmp/ng-* && cat /tmp/ng-*/angular-errors.log && false)
 
 FROM nginx:alpine
-COPY --from=build /app/dist/* /usr/share/nginx/html/
+COPY --from=build /app/dist/client-app2022 /usr/share/nginx/html/
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
+
+

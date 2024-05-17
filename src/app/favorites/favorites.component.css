@@ -1,57 +1,48 @@
 ul {
     list-style-type: none;
     margin: 0;
-    padding: 33;
-  }
+    padding: 0; /* Corrected padding to be valid (33 was missing units) */
+}
 
-  .center-text {
+.center-text, .center-heading {
     text-align: center;
     margin: auto;
     width: 50%; /* Adjust the width as needed */
-  }
+}
 
-  .center-heading {
-    text-align: center;
-    margin: auto;
-    width: 50%; /* Adjust the width as needed */
-  }
-  /* Typography */
+/* Typography */
 h1 {
     font-family: 'Georgia', serif;
     color: #333;
-  }
-  
-  h4, p {
+}
+
+h4, p {
     font-family: 'Arial', sans-serif;
     color: #666;
-  }
+}
 
-  .favorites-list {
-    text-align: center;
-  }
-  
-  .cocktail-list {
-    list-style-type: none;
+.cocktail-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around; /* Adjust as needed */
-  }
-  
-  .cocktail-item {
+    justify-content: space-around; /* This provides equal spacing */
+}
+
+.cocktail-item {
+    background: #dcf8dc;
     padding: 15px;
-  margin: 10px; /* Adds margin around each item */
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  flex-basis: calc(33% - 20px); /* Adjust this value based on the number of items per row */
+    margin: 10px; /* Adds margin around each item */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    flex-basis: calc(33% - 20px); /* Ensures no more than 3 items per row at full size */
     text-align: center;
-  }
-  
-  .cocktail-item:hover {
+}
+
+.cocktail-item:hover {
     box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Larger shadow for a lifted effect */
     transition: box-shadow 0.3s ease; /* Smooth transition */
-  }
+}
 
-  .button-remove {
+.button-remove {
     background-color: #dc3545; /* Red color */
     color: white;
     border: none;
@@ -63,21 +54,26 @@ h1 {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
-  
-  .button-remove:hover {
+}
+
+.button-remove:hover {
     background-color: #c82333; /* Darker red color on hover */
-  }
+}
 
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1024px) {
+    .cocktail-item {
+        flex-basis: calc(50% - 20px); /* Adjust to show 2 items per row on medium screens */
+    }
+}
 
-  /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
-    .list-item {
-      flex-direction: row;
+    .cocktail-item {
+        flex-basis: 100%; /* Adjust to show 1 item per row on small screens */
     }
-  
+
     .img-thumbnail {
-      width: 100%;
-      margin-bottom: 10px;
+        width: 100%; /* Ensures images are responsive */
+        margin-bottom: 10px;
     }
-  }
+}

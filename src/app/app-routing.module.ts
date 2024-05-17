@@ -11,7 +11,8 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'cocktails',component: CocktailListComponent},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'favorites', component: FavoritesComponent, canActivate: [AuthGuard] } 
+  { path: 'favorites', component: FavoritesComponent, canActivate: [AuthGuard] }
+  
 ];
 
 @NgModule({

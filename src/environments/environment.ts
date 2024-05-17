@@ -7,15 +7,15 @@ export const environment = {
     apiUri : 'http://localhost:3000',
     auth0:
   {
-    //domain: 'dev-7gh4ttlz8xd5eek3.eu.auth0.com',
-    //clientId: 'mHnrnnkFxJTpEvSRTNJwIfdhcBo6MBYc',
+   //domain: 'dev-7gh4ttlz8xd5eek3.eu.auth0.com',
+   // clientId: 'mHnrnnkFxJTpEvSRTNJwIfdhcBo6MBYc',
     domain: 'dev-542njpw2o0b02kdk.us.auth0.com',
     clientId: 'Sx1OBmmUP4mNnqAkWNTum2NYCdzWrMoR',
-    callback_URL: 'localhost:4200/callback',
-    audience: 'cocktails'
+    callback_URL: 'http://localhost:4200/callback',
+    audience: 'http://cocktails'
   }
 };
- 
+ // this was callbackurl-----localhost:4200/callback
   /*
    * For easier debugging in development mode, you can import the following file
    * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

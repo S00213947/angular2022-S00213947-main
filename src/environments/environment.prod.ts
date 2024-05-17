@@ -17,11 +17,13 @@ old logout      http://localhost:3000
 //updated after no account
 export const environment = {
   production: true,
-  apiUri: 'https://restapi2022-s00213947-production-35b0.up.railway.app/',  // Change this to your production API URL
+  apiUri: 'https://restapi2022-s00213947-production-35b0.up.railway.app',  
   auth0: {
     domain: 'dev-542njpw2o0b02kdk.us.auth0.com',
     clientId: 'Sx1OBmmUP4mNnqAkWNTum2NYCdzWrMoR',
-    callback_URL: 'https://cocktails-docker.azurewebsites.net/',  // Update with your actual production callback URL
-    audience: 'cocktails'
+    callback_URL: 'https://cocktails-docker.azurewebsites.net/callback',
+    audience: 'http://cocktails'
   }
 };
+
+//https://cocktails-docker.azurewebsites.net

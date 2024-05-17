@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { environment } from 'src/enviroments/enviroment';  // Adjust the path as necessary
+import { environment } from 'src/environments/environment';  // Adjust the path as necessary
 import { Cocktail } from './cocktail';
 
 @Injectable({
